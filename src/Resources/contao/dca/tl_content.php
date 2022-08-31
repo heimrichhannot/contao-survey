@@ -11,6 +11,7 @@
 use Contao\DataContainer;
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['survey'] = '{type_legend},type,headline;{survey_legend},survey;{template_legend:hide},surveyTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['survey_result_element'] =  '{type_legend},type,headline;{survey_legend},survey,evaluateCurrentUser;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['survey'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_content']['survey'],
@@ -28,6 +29,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['surveyTpl'] = [
     'inputType' => 'select',
     'options_callback' => ['tl_content_survey', 'getSurveyTemplates'],
     'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['evaluateCurrentUser'] = [
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w50'],
+    'sql' => "char(1) NOT NULL default ''",
 ];
 
 class tl_content_survey extends tl_content

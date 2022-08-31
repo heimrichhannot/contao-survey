@@ -9,6 +9,6 @@ services:
                 - ["setContainer", ["@service_container"]]
 
     Hschottm\SurveyBundle\:
-        resource: '../../{EventListener,DataContainer,Migration}/*'
+        resource: '../../{Controller,EventListener,DataContainer,Migration}/*'
         autowire: true
         autoconfigure: true
